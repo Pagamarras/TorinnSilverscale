@@ -1,0 +1,24 @@
+{% extends 'blogje/base.html' %}
+
+{% block content %} 
+{% for post in posts %}
+<style>
+.short-text {
+        height: 250px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+}
+</style>
+<div class="post">
+ <div class="date">
+	<p>published: {{post.published_date }}</p>
+ </div>
+	<h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+	<p class='short-text'>{{ post.text|linebreaksbr }}</p>
+
+
+</div> 
+
+{% endfor %}
+{% endblock %}
